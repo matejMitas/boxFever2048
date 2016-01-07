@@ -1,0 +1,51 @@
+/* -------------------------------- 
+
+Minimal header
+
+-------------------------------- */
+
+$hud-height: 125px;
+
+.wrapperSmallHud { //vymysli lepší název
+	height: $height;
+	.hud {
+		@include span(12);
+		height: $hud-height;
+	}
+
+	.game {
+		@include span(12);
+		height: calc(100vh - 20px - #{$hud-height});
+	}
+}
+
+/* -------------------------------- 
+
+Logo header
+
+-------------------------------- */
+
+.wrapperBigHud { //vymysli lepší název
+	height: $height;
+	.hud {
+		@include span(12);
+		height: calc(50vh - #{$body-margin});
+	}
+
+	.game {
+		@include span(12);
+		height: calc(50vh - #{$body-margin});
+	}
+}
+
+@media screen and (max-height: 640px) {
+	.wrapper {
+		.hud {
+			height: calc(35vh - #{$body-margin});
+		}
+		.game {
+			height: calc(65vh - #{$body-margin});
+		}
+	}
+}
+

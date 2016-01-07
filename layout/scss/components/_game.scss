@@ -1,0 +1,9 @@
+.game {
+	@include border(big);
+
+	canvas {
+		width: $width;
+		@include calc-height(100vh, 125px, 1, 0);
+	}
+
+}

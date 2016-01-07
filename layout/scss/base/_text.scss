@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'vcr';
+	src: url('../font/VCR_OSD_MONO_1.001.ttf') format('truetype');
+}
+
+.text {
+	&__heading, &__body {
+		font-family: 'vcr';
+	}
+
+	&__heading {
+		font-size: 50px;
+	}
+	&__body {
+		font-size: 18px;
+	}
+}

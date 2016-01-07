@@ -1,0 +1,33 @@
+.profile {
+
+	text-align: left;
+
+
+	&__row {
+		height: 50px;
+		@include border(small);
+
+
+
+	}
+
+	&__img {
+		width: calc(100% - 20px);
+		height: 30vh;
+		background: $main-c;
+		margin: $body-margin;
+	}
+
+	&__heading {
+		width: 100%;
+	}
+
+	.text__body {
+		font-size: 18px;
+		margin-left: 15px;
+	}
+
+	.shame-on-you {
+		padding-top: 15px;
+	}
+}

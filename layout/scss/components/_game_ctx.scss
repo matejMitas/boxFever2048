@@ -1,0 +1,32 @@
+.game__ctx {
+	@include span(12 of 12);
+	
+	&__span, &__btn {
+		@include border(small);
+		@extend .text__heading;
+			
+		height: 100%;
+
+		
+	}
+
+	&__span {
+	}
+
+	&__btn {
+		&:hover, &:focus, &:active {
+			@include border(small, true);
+		}
+		&__text {
+			text-align: center;
+			@include vertical-align();
+
+			.text__body {
+				padding: 20px;
+				line-height: 1.25;
+			}
+		}
+	}
+}
+
+

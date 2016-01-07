@@ -1,0 +1,37 @@
+.header {
+	@include span(12 of 12);
+	max-height: calc(48vh + 30px);
+
+	&__logo {
+		display:block;
+		margin: 0 auto;
+		max-width: 500px;
+		width: 100%;
+		padding: 80px 0;
+	}
+}
+
+/* .test {
+	width: 400px;
+	height: 400px;
+	margin: 100px;
+
+	color: blue;
+	@include border(big);
+
+	// box-shadow: 0px 2px 0px 0px #ccc; // offset vlevo, offset vrch, blur, spread
+	// box-shadow: inset 5px -5px 0 5px blue;
+
+	&:hover {
+		color: black;
+		background: blue;
+		@include border(big, true);
+	}
+
+	.text {
+		font-size: 26px;
+  		text-align: center;
+		@include vertical-align();
+	}
+
+} */

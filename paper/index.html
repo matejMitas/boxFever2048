@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Box Fever 2048</title>
+	<script src="js/paper-full.js"></script>
+	<link rel="stylesheet" href="css/style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+	<header>
+		
+		<div class="row">
+			<div class="col col-span-2">
+				Cíl
+				<div class="target"></div>
+			</div>
+			<div class="col col-span-8"><img src="img/logo.jpg" alt=""></div>
+			<div class="col col-span-2 c">
+				Scóre
+				<div id="s" class="score">20</div>
+			</div>
+		</div>
+	
+	</header>
+	<canvas id="myCanvas" resize></canvas>
+	
+	<!-- Javascript files -->
+	
+	<script src="js/functions.js"></script>
+	<script type="text/paperscript" src="js/main.js" canvas="myCanvas"></script>
+</body>
+</html>

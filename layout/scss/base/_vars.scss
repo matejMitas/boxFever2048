@@ -1,0 +1,26 @@
+/* -------------------------------- 
+
+Variables
+
+-------------------------------- */
+
+$main-c: #7cff7c;
+$bg-c: black;
+
+$body-margin: 10px;
+$width: calc(100vw - #{$body-margin} * 2);
+$height: calc(100vh - #{$body-margin} * 2);
+
+$head-width: 50px;
+
+/* -------------------------------- 
+
+Susy configuration
+
+-------------------------------- */
+
+$susy: (
+  columns: 12,
+  gutters: 0,
+  container: 960px
+);

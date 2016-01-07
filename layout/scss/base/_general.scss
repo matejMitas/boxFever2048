@@ -1,0 +1,17 @@
+/* -------------------------------- 
+
+Basic body styles
+
+-------------------------------- */
+
+.content {
+  @include container;
+}
+
+body {
+	background: $bg-c;
+	color: $main-c;
+	margin: $body-margin;
+	text-transform: uppercase;
+	overflow-x: hidden;
+}

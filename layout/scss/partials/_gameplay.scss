@@ -1,0 +1,67 @@
+.gameplay {
+	@include span(12);
+	@include border(big);
+	
+	height: calc(52vh - 30px);
+
+	&__header {
+		@include span(12 of 12);
+
+		height: 50px;
+		font-size: 20px;
+		text-align: center;
+
+		&__window {
+			@include span(3 of 12);
+			height: 50px;
+			color: $main-c;
+		}	
+		
+		&__message {
+			@include span(9 at 4 of 12);
+			
+			color: black;
+			height: 50px;
+			background: $main-c;
+		}
+
+		&__text {
+			@include vertical-align();
+		}
+	}
+
+	&__content {
+		@include span(12 of 12);
+		
+		&__play, &__settings {
+			@include span(12 of 12);
+			
+			height: calc(26vh - 40px);
+		}
+
+		&__button {
+			@include span(6 of 12);
+			@include border(small);
+			
+			height: 100%;
+			font-size: 50px;
+
+			&:hover {
+				@include border(small, true);
+			}
+
+			&__text {
+				text-align: center;
+				@include vertical-align();
+			}
+
+		}
+
+		&__settings {
+			&--b {
+				@include span(4 of 12);
+			}
+		}
+	}
+
+}

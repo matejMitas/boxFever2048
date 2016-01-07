@@ -1,0 +1,105 @@
+/* -------------------------------- 
+
+Susy import
+
+-------------------------------- */
+
+@import "../bower_components/susy/sass/susy";
+
+/* -------------------------------- 
+
+Base
+
+-------------------------------- */
+
+@import "base/vars";
+@import "base/reset";
+@import "base/mixins";
+@import "base/general";
+@import "base/text";
+@import "base/grid";
+
+/* -------------------------------- 
+
+Components
+
+-------------------------------- */
+
+@import "components/height_modes";
+
+@import "components/game_header";
+@import "components/game_ctx";
+@import "components/game";
+
+@import "components/hud";
+
+/* -------------------------------- 
+
+Partials 
+
+-------------------------------- */
+
+@import "partials/header";
+@import "partials/gameplay";
+@import "partials/profile";
+
+/* -------------------------------- 
+
+Flexbox experiments
+
+-------------------------------- */
+
+// .gameplay {
+// 	@include border(big);
+// 	height: calc(50vh - 20px);
+
+// 	&__header {
+// 		font-size: 20px;
+// 		text-align: center;
+// 		height: 50px;
+
+// 		display: flex;
+//   		flex-direction: row;
+
+// 		&__window {
+// 			flex-basis: 25%;
+// 			max-width: 250px;
+// 			min-width: 250px;
+// 			align-self: center;
+// 		}	
+		
+// 		&__message { 
+// 			color: black;
+// 			flex-basis: 75%;
+// 			flex-grow: 1;
+// 			background: $main-color;
+			
+// 			display: flex;
+// 			flex-direction: column;
+// 			justify-content: center;
+//   			align-items: center;
+// 		}
+// 	}
+
+// 	&__content {
+		
+// 		display: flex;
+//   		flex-direction: row;
+		
+// 		&__play {
+// 			height: calc(25vh - 50px);
+// 		}
+
+// 		&__settings {
+// 			height: calc(25vh - 50px);
+// 		}
+
+// 		&__button {
+// 			@include border(small);
+// 			flex-basis: 1;
+// 			height: 20%;
+// 		}
+// 	}
+// } 
+
+

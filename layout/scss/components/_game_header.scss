@@ -1,0 +1,68 @@
+.game__head {
+
+	&--3, &--2 {
+		@include span(12 of 12);
+		@extend .text__body;
+		height: 50px;
+		text-align: center;
+	}
+
+	&--3 {
+		&__window, &__select {
+			@include span(3 of 12);
+			height: 50px;
+			color: $main-c;
+		}	
+				
+		&__msg {
+			@include span(6 at 4 of 12);
+			color: black;
+			height: 50px;
+			background: $main-c;
+		}
+	}
+
+	&--2 {
+		&__window {
+			@include span(3 of 12);
+			height: 50px;
+			color: $main-c;
+		}	
+				
+		&__msg {
+			@include span(9 at 4 of 12);
+			color: black;
+			height: 50px;
+			background: $main-c;
+		}
+	}
+
+	&__text {
+		@include vertical-align();
+	}
+}
+
+
+@media screen and (min-width: 1440px) {
+	.game__head {
+		&--3 {
+			&__window, &__select {
+				@include span(2 of 12);
+			}	
+					
+			&__msg {
+				@include span(8 at 4 of 12);
+			}
+		}
+
+		&--2 {
+			&__window {
+				@include span(2 of 12);
+			}	
+					
+			&__msg {
+				@include span(10 at 4 of 12);
+			}
+		}
+	}
+}

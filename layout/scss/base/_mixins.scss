@@ -1,0 +1,34 @@
+@mixin border($size, $hover:false, $color:$main-c) {
+
+	$width: 0;
+	
+	// One level border
+	@if $size == big {
+		$width: 4px;
+	} @else if $size == small {
+		$width: 2px;
+	}
+	
+	// Hover border
+	@if $hover == true {
+		box-shadow: inset 0 0 0 $width $color, inset 0 0 0 $width*5 $bg-c;
+		background: $main-c;
+		color: black;
+	} @else {
+		box-shadow: inset 0 0 0 $width $color;
+	}
+} 
+
+@mixin vertical-align {
+  	position: relative;
+  	top: 50%;
+  	-webkit-transform: translateY(-50%);
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+}  
+
+
+// args($base-height, $rows, $headers)
+@mixin calc-height($height, $hud, $rows, $headers) {
+	height: calc((#{$height} - (#{$body-margin} * 2) - #{$hud} - (#{$head-width} * #{$headers})) / #{$rows});
+}

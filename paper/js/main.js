@@ -1,18 +1,81 @@
 /* -------------------------------- 
 
-Generate Shape
+Helper Functions
 
 -------------------------------- */
 
-function getShape(props) {
+
+
+function clearLayer() {
+    project.activeLayer.removeChildren(1);
+}
+
+function clearWholeLayer() {
+    project.activeLayer.removeChildren();
+}
+
+
+/* -------------------------------- 
+
+My code
+
+-------------------------------- */
+
+
+function Game(param) {
+    this.param = param;
+}
+
+Game.prototype = {
+    drawShapes: function(maxTries) {
+
+        var x = dimensions()[0];
+        var y = dimensions()[1];
+        var sampleObj = {
+            'shape': 'rect',
+            'from': [x, y],
+            'to': [x + 50, y + 50],
+            'color': 'red'
+        }
+
+        var shapes = [this.generateShape(sampleObj)];
+
+        // the magic happens here
+
+        for (var i = 0; i < maxTries; i++) {
+            var shapeToTest = this.generateShape();
+            this.checkOverlap(shapeToTest, shapes);
+        }
+
+        // deprecated!!!!!
+
+        var bounding = new Path.Rectangle({
+              from: [15,15],
+              to: [view.size.width - 15, view.size.height - 15],
+              strokeColor: '#2bff9b',
+              strokeWidth: 2
+        });
+    },
+
+    generateRandomProps: function() {  
+
+        /* -------------------------------- 
     
-    var shape;
+        blueprint for an props object
 
-    // mode selection
-    if (typeof(props) === 'undefined') { props = randomProps()};
+        var props = {
+            center: [x,y],
+            color: "",
+            opacity: num,
+            radius: [x,y],
+            shape: ""
+        }
+    
+        -------------------------------- */
 
-    // create random params
-    function randomProps() {     
+
+        // TODO: Make props generating more abstract
+
       var props = {};
       var shapes = ['rect','circle','round','star', 'ellipse', 'polygon'];
       
@@ -52,13 +115,19 @@ function getShape(props) {
       }
 
       return props;      
-    }
+    }, 
 
-    generate(props);
+    generateShape: function(props) {
 
-    function generate(props) {
+        // TODO: zjistit, jak kurva funguje ten undefined!
 
-      // rectangular based shapes
+        if (typeof(props) === 'undefined') { 
+            props = this.generateRandomProps();
+        }
+
+        var shape;
+        
+        // rectangular based shapes
       if (props['shape'] == 'rect') {
         shape = new Path.Rectangle({
           from: props['from'],
@@ -113,157 +182,19 @@ function getShape(props) {
        }
       
       return shape;
-    }
-    return shape;
-}
+    }, 
 
-
-
-
-
-
-
-
-function clearLayer() {
-    project.activeLayer.removeChildren(1);
-}
-
-function clearWholeLayer() {
-    project.activeLayer.removeChildren();
-}
-
-function drawDialog(array, ret) {
-     var bounding = new Path.Rectangle({
-          from: [15,15],
-          to: [view.size.width - 15, view.size.height - 15],
-          fillColor: '#2bff9b',
-    });
-    
-    for (var i = 0; i < array.length; i++) { 
-        var cons = (i * 75);
-        var text = new PointText(new Point(view.center.x, view.center.y + cons));
-        text.fillColor = 'black';
-        text.content = array[i];
-        text.fontSize = 50;
-        text.fontFamily = 'vcr';
-        text.justification = 'center';
-    }
-    
-     if (ret) {
-        return bounding; 
-     }
-}
-
-
-
-
-
-
-
-
-function drawGame(init) {
-
-    if (init == false) {
-        var shape = project.activeLayer.firstChild;
-        shape.position.x = dimensions()[0];
-        shape.position.y = dimensions()[1];
-        shape.bringToFront();
-    } else if (init == true) {
-        var x = dimensions()[0];
-        var y = dimensions()[1];
-        var sampleObj = {
-          'shape': 'rect',
-          'from': [x, y],
-          'to': [x + 50, y + 50],
-          'color': 'red'
-        }
-
-        var arr = [getShape(sampleObj)];
-    }
-      
-    var p = project.activeLayer;
-
-    var arr = [project.activeLayer.firstChild];
-    
-    function check(random, arr) {
-        for (var i = 0; i < arr.length; i++) {
-            if (random.intersects(p.children[i])) {
-                random.remove();
+    checkOverlap: function (shapeToTest, shapes) {
+        for (var i = 0; i < shapes.length; i++) {
+            if (shapeToTest.intersects(project.activeLayer.children[i])) {
+                shapeToTest.remove();
                 return false;
             }
         }
-        arr.push(random);
-    }	
-    
-    for (var i = 0; i < 100; i++) {
-        var random = getShape();
-        check(random, arr);
+        shapes.push(shapeToTest);
     }
-    var bounding = new Path.Rectangle({
-          from: [15,15],
-          to: [view.size.width - 15, view.size.height - 15],
-          strokeColor: '#2bff9b',
-          strokeWidth: 2
-    });
-
-} 
-
-drawDialog(['KLIKEJTE NA', 'CERVENY CTVEREC'], false);
-
-setTimeout(function() {
-  clearWholeLayer();
-  drawGame(true);
-  startAnim();
-}, 1000);
-
-var counter = 0;
-var timer = 0;
-var s = document.getElementById('s');
-s.innerHTML = counter; 
-
-function startAnim() {
-	paper.view.attach('frame', anim);
-	console.log("animation start");
 }
 
-function stopAnim() {
-	paper.view.detach('frame', anim);	
-	console.log("animation stop");
-}
+var ball = new Game("päťsto");
+ball.drawShapes(50);
 
-function anim(event) {
-	for (var j = 1, l = project.activeLayer.children.length - 1; j < l; j++) {
-        var item = project.activeLayer.children[j];
-           item.fillColor.hue += 10;
-           item.rotate(item.bounds.x / view.size.height);
-        }
-    var item = project.activeLayer.firstChild;
-    item.rotate(2);   
-        
-   timer = event.time;
-   if (timer > 15) {
-      drawDialog(['PROHRALI JSTE!', 'JSTE POMALI'],true);
-   }
-} 
-	    
-function onMouseDown(event) {
-
-        for (var j = 0, l = project.activeLayer.children.length - 1; j < l; j++) {
-            var item = project.activeLayer.children[j];
-            
-            item.onMouseDown = function(event) {
-                if (this.id == 5 && counter < 5) {
-                    clearLayer();
-                    drawGame(false);
-                    counter++;
-                    s.innerHTML = counter; 
-                    console.log(this.id);
-                } else if (counter == 5) {;
-                    console.log(timer);
-                    stopAnim();
-                    clearWholeLayer();
-                    drawDialog(['VYHRALI JSTE!', 'VAS CAS ' + timer.toFixed(3) + "s"],true);
-                }
-        }
-    }    
-}

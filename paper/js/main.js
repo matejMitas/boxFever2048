@@ -1,19 +1,15 @@
-/* global randomNumber */
-/* global randomColor */
+/* -------------------------------- 
 
-function dimensions() {
-  var gap = 15;
-  var radius = randomNumber(40,100);
-  var x = randomNumber(radius + gap, view.size.width - radius - gap);
-  var y = randomNumber(radius + gap, view.size.height - radius - gap);
-  return [x, y, radius];
-}
+Generate Shape
+
+-------------------------------- */
 
 function getShape(props) {
+    
     var shape;
 
     // mode selection
-    if (typeof(props)==='undefined') { props = randomProps()};
+    if (typeof(props) === 'undefined') { props = randomProps()};
 
     // create random params
     function randomProps() {     

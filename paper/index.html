@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Box Fever 2048</title>
-	<script src="js/paper-full.js"></script>
+	<script src="bower_components/paper/dist/paper-full.js"></script>
 	<link rel="stylesheet" href="css/style.css">
     <style>
 
@@ -13,11 +13,15 @@
 	<header>
 		
 		<div class="row">
-			<div class="col col-span-2">
+			<div class="col col-span-1">
 				Cíl
 				<div class="target"></div>
 			</div>
-			<div class="col col-span-8"><img src="img/logo.jpg" alt=""></div>
+			<div class="col col-span-1">
+				Pauza
+				<div class="pause"></div>
+			</div>
+			<div class="col col-span-7"><img src="img/logo.jpg" alt=""></div>
 			<div class="col col-span-2 c">
 				Scóre
 				<div id="s" class="score">20</div>
@@ -31,5 +35,6 @@
 	
 	<script src="js/functions.js"></script>
 	<script type="text/paperscript" src="js/main.js" canvas="myCanvas"></script>
+	<!--<script type="text/paperscript" src="js/demo.js" canvas="myCanvas"></script>-->
 </body>
 </html>
